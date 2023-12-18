@@ -7,7 +7,6 @@ const listingRoutes = require("./routes/listingRoutes");
 const cookieParser = require("cookie-parser");
 const path = require("path"); // Import path module
 
-
 dotenv.config();
 
 mongoose
@@ -18,7 +17,6 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
 
 const app = express();
 
@@ -34,10 +32,12 @@ app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/listing', listingRoutes);
 
+
 app.use(express.static(path.join(__dirname, '/client/dist')));
-app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname, 'client', 'index.html'));
-});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+})
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
