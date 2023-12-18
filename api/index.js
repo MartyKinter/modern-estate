@@ -5,8 +5,7 @@ const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const listingRoutes = require("./routes/listingRoutes");
 const cookieParser = require("cookie-parser");
-
-const __dirname = path.resolve();
+const path = require("path"); // Import path module
 
 
 dotenv.config();
