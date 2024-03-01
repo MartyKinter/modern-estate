@@ -44,6 +44,10 @@ export default function SignIn() {
     }
   }
 
+  const handleForgotPassword = () => {
+    navigate('/forgot-password'); // Navigate to the password reset page
+  };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
@@ -74,6 +78,14 @@ export default function SignIn() {
         <Link to={"/sign-up"}>
           <span className="text-blue-700">Sign up</span>
         </Link>
+      </div>
+      <div className="mt-3">
+        <button
+          onClick={handleForgotPassword}
+          className="text-blue-700 hover:underline focus:outline-none"
+        >
+          Forgot Password?
+        </button>
       </div>
       {error && <p className="text-red-500 mt-5">{error}</p>}
     </div>

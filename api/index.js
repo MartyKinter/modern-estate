@@ -5,6 +5,9 @@ const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const listingRoutes = require("./routes/listingRoutes");
 const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
+const xss = require("xss-clean");
+
 const path = require("path"); // Import path module
 
 
@@ -19,12 +22,12 @@ mongoose
     console.log(err);
   });
 
-  const __directory = path.resolve();
-
+const __directory = path.resolve();
 const app = express();
 
+app.use(helmet());
+app.use(xss());
 app.use(express.json());
-
 app.use(cookieParser());
 
 app.listen(3000, () => {
