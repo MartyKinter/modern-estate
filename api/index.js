@@ -26,6 +26,12 @@ const __directory = path.resolve();
 const app = express();
 
 app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    imgSrc: ["'self'", "https://firebasestorage.googleapis.com"]
+  }
+}));
 app.use(xss());
 app.use(express.json());
 app.use(cookieParser());
